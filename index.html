@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CCC Knowledge Library</title>
+<style>
+:root{
+  --cream:#f5efdf;
+  --cream2:#ebe0c8;
+  --paper:#fffdf8;
+  --ink:#26180f;
+  --muted:#7c6752;
+  --line:#d8cbb5;
+  --brown:#8f6945;
+  --green:#44794e;
+  --sage:#8aa07b;
+  --gold:#b98b4d;
+  --blue:#5e7896;
+  --shadow:0 20px 50px rgba(61,42,20,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+}
+button,input{font:inherit}
+button{cursor:pointer}
+.hero{
+  min-height:520px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  padding:70px 22px;
+  background:
+    linear-gradient(rgba(89,70,43,.075) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(89,70,43,.075) 1px,transparent 1px),
+    radial-gradient(circle at 50% 15%,rgba(255,255,255,.7),transparent 48%),
+    linear-gradient(115deg,#f7f1e2,#ded0b6);
+  background-size:110px 110px,110px 110px,auto,auto;
+}
+.hero:before,.hero:after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(117,88,53,.16);
+}
+.hero:before{width:340px;height:340px;left:-190px;bottom:-170px}
+.hero:after{width:290px;height:290px;right:-150px;top:-130px}
+.hero-content{position:relative;z-index:2;width:min(100%,980px)}
+.eyebrow{
+  color:#94704d;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-size:13px;
+  font-weight:700;
+  margin:0 0 20px;
+}
+h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(48px,7.5vw,86px);
+  font-weight:400;
+  line-height:1;
+  margin:0;
+}
+.hero-sub{
+  font-family:Georgia,"Times New Roman",serif;
+  font-style:italic;
+  color:#845d30;
+  font-size:clamp(19px,2.3vw,29px);
+  margin:17px 0 34px;
+}
+.search-wrap{
+  width:min(690px,94vw);
+  margin:auto;
+  background:rgba(255,253,248,.96);
+  border:1px solid rgba(125,96,61,.25);
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 20px;
+  box-shadow:0 10px 30px rgba(64,42,17,.08);
+}
+.search-icon{font-size:25px;color:#96714d}
+.search-input{
+  flex:1;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:var(--ink);
+  font-size:18px;
+  padding:19px 4px;
+}
+.search-input::placeholder{color:#b6966f}
+.search-clear{
+  border:0;
+  background:transparent;
+  color:#8c6d4c;
+  font-size:17px;
+}
+main{padding:48px 20px 70px}
+.container{width:min(1180px,100%);margin:auto}
+.summary{
+  display:flex;
+  gap:38px;
+  flex-wrap:wrap;
+  padding:0 0 28px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:38px;
+}
+.summary div{min-width:100px}
+.summary b{
+  display:block;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:29px;
+  font-weight:400;
+}
+.summary small{
+  display:block;
+  margin-top:4px;
+  color:#967652;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:flex-end;
+  margin-bottom:22px;
+}
+.section-head h2{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:36px;
+  font-weight:400;
+}
+.section-head span{color:var(--muted);font-size:13px}
+.shelves{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.shelf-card{
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:var(--paper);
+  overflow:hidden;
+  box-shadow:0 10px 26px rgba(65,45,24,.06);
+  transition:transform .2s ease,box-shadow .2s ease;
+  cursor:pointer;
+  min-height:270px;
+  display:flex;
+  flex-direction:column;
+}
+.shelf-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
+}
+.shelf-cover{
+  height:105px;
+  position:relative;
+  overflow:hidden;
+}
+.shelf-cover:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+.shelf-icon{
+  position:absolute;
+  left:22px;
+  bottom:17px;
+  z-index:1;
+  font-size:37px;
+}
+.shelf-copy{padding:22px 22px 12px}
+.shelf-copy h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:24px;
+  font-weight:400;
+  margin:0 0 9px;
+}
+.shelf-copy p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.65;
+  font-size:14px;
+}
+.shelf-count{
+  margin-top:auto;
+  padding:0 22px 20px;
+  color:#97764f;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.footer{
+  margin-top:55px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+  text-align:center;
+  color:#8a7259;
+  font-size:13px;
+}
+.empty{
+  grid-column:1/-1;
+  padding:45px;
+  text-align:center;
+  border:1px dashed var(--line);
+  border-radius:18px;
+  color:var(--muted);
+}
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(30,20,12,.67);
+  backdrop-filter:blur(5px);
+  z-index:50;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+.modal.open{display:flex}
+.modal-box{
+  width:min(900px,100%);
+  max-height:92vh;
+  overflow:auto;
+  background:var(--paper);
+  border-radius:24px;
+  box-shadow:0 35px 90px rgba(0,0,0,.35);
+}
+.modal-top{
+  min-height:150px;
+  padding:27px;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+}
+.modal-top:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.10) 1px,transparent 1px);
+  background-size:36px 36px;
+}
+.modal-heading{position:relative;z-index:1}
+.modal-heading small{
+  display:block;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.modal-heading h2{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:38px;
+  font-weight:400;
+}
+.modal-close{
+  position:absolute;
+  right:18px;
+  top:18px;
+  z-index:2;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:1px solid rgba(40,25,10,.16);
+  background:rgba(255,255,255,.78);
+  color:var(--ink);
+  font-size:20px;
+}
+.modal-content{padding:26px}
+.shelf-intro{
+  color:#6f5c48;
+  line-height:1.75;
+  padding-bottom:22px;
+  border-bottom:1px solid var(--line);
+}
+.resource-list{display:grid;gap:13px;margin-top:22px}
+.resource{
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px 17px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:14px;
+  align-items:start;
+  cursor:pointer;
+  transition:background .18s ease,transform .18s ease;
+}
+.resource:hover{
+  background:#fbf5e8;
+  transform:translateX(3px);
+}
+.resource-tag{
+  font-size:9px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+  padding:4px 7px;
+  background:#efe5d2;
+  color:#956f43;
+  border-radius:5px;
+}
+.resource h4{
+  margin:0 0 5px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:19px;
+  font-weight:400;
+}
+.resource p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.55;
+  font-size:13px;
+}
+.arrow{color:#96714b;font-size:22px}
+.back-btn{
+  border:1px solid var(--line);
+  background:#f7f0e1;
+  color:#6c5134;
+  border-radius:999px;
+  padding:9px 13px;
+  margin-bottom:20px;
+}
+.detail-tag{
+  display:inline-block;
+  padding:5px 8px;
+  border-radius:5px;
+  background:#efe5d2;
+  color:#8e6740;
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.detail-title{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:36px;
+  font-weight:400;
+  margin:14px 0 8px;
+}
+.detail-sub{
+  color:#8a7158;
+  margin-bottom:23px;
+}
+.detail-body{
+  color:#493a2c;
+  line-height:1.82;
+  font-size:16px;
+}
+.detail-body h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:24px;
+  font-weight:400;
+  color:var(--ink);
+  margin:28px 0 10px;
+}
+.detail-body ul{padding-left:22px}
+.detail-body li{margin-bottom:8px}
+.callout{
+  margin-top:24px;
+  border-left:4px solid var(--green);
+  background:#edf3ea;
+  border-radius:0 13px 13px 0;
+  padding:16px 18px;
+  color:#36513b;
+}
+.coming-soon{
+  padding:28px;
+  border:1px dashed var(--line);
+  border-radius:16px;
+  text-align:center;
+  color:var(--muted);
+}
+@media(max-width:900px){.shelves{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){
+  .hero{min-height:470px}
+  .shelves{grid-template-columns:1fr}
+  .summary{gap:24px}
+  .section-head{align-items:flex-start;flex-direction:column}
+  .modal-top{min-height:130px}
+  .modal-heading h2{font-size:31px}
+  .detail-title{font-size:31px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">Cross-Catchment Collective</p>
+    <h1>The CCC Knowledge Library</h1>
+    <p class="hero-sub">Where learning takes root</p>
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input id="searchInput" class="search-input" type="text" placeholder="Search shelves, topics, guides, concepts…" autocomplete="off">
+      <button class="search-clear" id="searchClear" aria-label="Clear search" style="display:none">✕</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="summary">
+      <div><b id="resourceTotal">0</b><small>Resources</small></div>
+      <div><b>7</b><small>Shelves</small></div>
+      <div><b>CCC</b><small>Academy 2026</small></div>
+    </div>
+
+    <div class="section-head">
+      <h2>Knowledge Shelves</h2>
+      <span>Open a shelf to explore its resources</span>
+    </div>
+
+    <section class="shelves" id="shelvesGrid"></section>
+
+    <div class="footer">CCC Knowledge Library · Built by <strong>Green Beacons</strong> · 2026</div>
+  </div>
+</main>
+
+<div class="modal" id="modal">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-top" id="modalTop">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-heading">
+        <small id="modalEyebrow"></small>
+        <h2 id="modalTitle"></h2>
+      </div>
+    </div>
+    <div class="modal-content">
+      <div id="shelfView">
+        <p class="shelf-intro" id="shelfIntro"></p>
+        <div class="resource-list" id="resourceList"></div>
+      </div>
+      <div id="resourceView" style="display:none">
+        <button class="back-btn" onclick="backToShelf()">← Back to shelf</button>
+        <div id="resourceDetail"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const shelves = [
+  {
+    title:"Environmental Stewardship",
+    icon:"🌿",
+    color:"linear-gradient(135deg,#dce9d7,#a9c69e)",
+    description:"Foundational ideas for understanding, caring for, and restoring the natural systems around us.",
+    resources:[
+      {
+        tag:"Starter Guide",
+        title:"Introduction to Environmental Stewardship",
+        summary:"A clear starting point for understanding what stewardship means in everyday environmental work.",
+        body:`
+          <p>Environmental stewardship means taking responsibility for the natural places, water systems, soil, plants, animals and communities that support life.</p>
+          <p>It is not only the work of scientists or conservation organisations. Stewardship happens whenever people notice environmental harm, understand its causes, and take practical steps to protect or restore what has been damaged.</p>
+
+          <h3>What stewardship looks like</h3>
+          <ul>
+            <li>Preventing litter and pollution from reaching rivers.</li>
+            <li>Protecting indigenous plants and removing invasive species.</li>
+            <li>Using water carefully and reporting leaks or contamination.</li>
+            <li>Helping communities understand how human behaviour affects the environment.</li>
+          </ul>
+
+          <div class="callout"><strong>Core lesson:</strong> Stewardship begins when people stop seeing nature as somebody else’s responsibility.</div>
+        `
+      },
+      {
+        tag:"Core Concept",
+        title:"Understanding River Catchments",
+        summary:"How rainfall, land, communities and rivers connect within one shared system.",
+        body:`
+          <p>A river catchment is the area of land where rainfall flows towards the same river, stream, wetland or dam. What happens high up in the catchment eventually affects people and ecosystems downstream.</p>
+
+          <h3>Why catchments matter</h3>
+          <ul>
+            <li>Waste thrown into a stream can travel through many communities.</li>
+            <li>Damaged soil can wash into rivers and reduce water quality.</li>
+            <li>Healthy wetlands slow water, reduce flooding and filter pollution.</li>
+            <li>Good catchment management requires cooperation across neighbourhood and organisational boundaries.</li>
+          </ul>
+
+          <div class="callout"><strong>Think across boundaries:</strong> A river does not recognise municipal borders. Catchment work must connect people who share the same water system.</div>
+        `
+      }
+    ]
+  },
+  {
+    title:"Catchment & River Health",
+    icon:"💧",
+    color:"linear-gradient(135deg,#dce9ed,#9ebdcc)",
+    description:"Practical knowledge about rivers, wetlands, water quality, pollution and restoration.",
+    resources:[]
+  },
+  {
+    title:"Community & Collaboration",
+    icon:"🤝",
+    color:"linear-gradient(135deg,#eadfce,#c8aa7d)",
+    description:"Working across organisations, communities and catchments with trust and shared purpose.",
+    resources:[]
+  },
+  {
+    title:"Youth Leadership",
+    icon:"🌱",
+    color:"linear-gradient(135deg,#e3ead7,#b7c68d)",
+    description:"Helping young people develop confidence, responsibility, communication and leadership.",
+    resources:[]
+  },
+  {
+    title:"Climate & Sustainability",
+    icon:"🌍",
+    color:"linear-gradient(135deg,#dbe7dc,#9fbd9e)",
+    description:"Understanding climate pressures and building practical, sustainable responses.",
+    resources:[]
+  },
+  {
+    title:"Enterprise & Livelihoods",
+    icon:"🧭",
+    color:"linear-gradient(135deg,#eee0cc,#d2ad73)",
+    description:"Ideas for strengthening local livelihoods, enterprise and economic opportunity.",
+    resources:[]
+  },
+  {
+    title:"Reports, Guides & Toolkits",
+    icon:"📚",
+    color:"linear-gradient(135deg,#e3dfeb,#aaa0c4)",
+    description:"Reference documents, practical guides, programme tools and learning resources.",
+    resources:[]
+  }
+];
+
+const grid = document.getElementById("shelvesGrid");
+const search = document.getElementById("searchInput");
+const clear = document.getElementById("searchClear");
+const modal = document.getElementById("modal");
+let activeShelf = null;
+
+function escapeHTML(value){
+  return String(value ?? "").replace(/[&<>"']/g,ch=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  })[ch]);
+}
+
+function countResources(){
+  return shelves.reduce((sum,s)=>sum+s.resources.length,0);
+}
+
+function renderShelves(){
+  const q = search.value.trim().toLowerCase();
+  const filtered = shelves.filter(s=>{
+    const hay = [
+      s.title,s.description,
+      ...s.resources.map(r=>`${r.title} ${r.summary} ${r.tag}`)
+    ].join(" ").toLowerCase();
+    return hay.includes(q);
+  });
+
+  clear.style.display = q ? "" : "none";
+  document.getElementById("resourceTotal").textContent = countResources();
+
+  if(!filtered.length){
+    grid.innerHTML = `<div class="empty"><strong>Nothing found yet.</strong><br>The library is always growing.</div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(s=>`
+    <article class="shelf-card" onclick="openShelf('${encodeURIComponent(s.title)}')">
+      <div class="shelf-cover" style="background:${s.color}">
+        <div class="shelf-icon">${s.icon}</div>
+      </div>
+      <div class="shelf-copy">
+        <h3>${escapeHTML(s.title)}</h3>
+        <p>${escapeHTML(s.description)}</p>
+      </div>
+      <div class="shelf-count">${s.resources.length} resource${s.resources.length===1?"":"s"}</div>
+    </article>
+  `).join("");
+}
+
+function openShelf(encodedTitle){
+  const title = decodeURIComponent(encodedTitle);
+  const shelf = shelves.find(s=>s.title===title);
+  if(!shelf) return;
+
+  activeShelf = shelf;
+  document.getElementById("modalTop").style.background = shelf.color;
+  document.getElementById("modalEyebrow").textContent = `${shelf.resources.length} resource${shelf.resources.length===1?"":"s"}`;
+  document.getElementById("modalTitle").textContent = shelf.title;
+  document.getElementById("shelfIntro").textContent = shelf.description;
+
+  const list = document.getElementById("resourceList");
+  list.innerHTML = shelf.resources.length
+    ? shelf.resources.map((r,i)=>`
+      <article class="resource" onclick="openResource(${i})">
+        <span class="resource-tag">${escapeHTML(r.tag)}</span>
+        <div>
+          <h4>${escapeHTML(r.title)}</h4>
+          <p>${escapeHTML(r.summary)}</p>
+        </div>
+        <span class="arrow">›</span>
+      </article>
+    `).join("")
+    : `<div class="coming-soon"><strong>Resources coming soon.</strong><br>This shelf is ready for the next CCC learning materials.</div>`;
+
+  document.getElementById("shelfView").style.display = "";
+  document.getElementById("resourceView").style.display = "none";
+  modal.classList.add("open");
+  document.body.style.overflow = "hidden";
+  document.getElementById("modalBox").scrollTop = 0;
+}
+
+function openResource(index){
+  if(!activeShelf || !activeShelf.resources[index]) return;
+  const r = activeShelf.resources[index];
+
+  document.getElementById("resourceDetail").innerHTML = `
+    <span class="detail-tag">${escapeHTML(r.tag)}</span>
+    <h3 class="detail-title">${escapeHTML(r.title)}</h3>
+    <div class="detail-sub">${escapeHTML(activeShelf.title)}</div>
+    <div class="detail-body">${r.body}</div>
+  `;
+
+  document.getElementById("shelfView").style.display = "none";
+  document.getElementById("resourceView").style.display = "";
+  document.getElementById("modalBox").scrollTop = 0;
+}
+
+function backToShelf(){
+  document.getElementById("resourceView").style.display = "none";
+  document.getElementById("shelfView").style.display = "";
+  document.getElementById("modalBox").scrollTop = 0;
+}
+
+function closeModal(){
+  modal.classList.remove("open");
+  document.body.style.overflow = "";
+  activeShelf = null;
+}
+
+search.addEventListener("input",renderShelves);
+clear.addEventListener("click",()=>{
+  search.value="";
+  search.focus();
+  renderShelves();
+});
+modal.addEventListener("click",e=>{
+  if(e.target===modal) closeModal();
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape") closeModal();
+});
+
+renderShelves();
+</script>
+</body>
+</html>
