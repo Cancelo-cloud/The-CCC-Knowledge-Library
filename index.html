@@ -404,6 +404,37 @@ main{padding:26px 20px 60px}
 .form-submit{background:#e7f1e4;color:#36513b;border-color:rgba(68,121,78,.28);font-weight:700}
 .saved-note{margin-top:9px;color:#6f8a57;font-size:12px}
 
+
+.file-input{
+  width:100%;
+  border:1px dashed var(--line);
+  border-radius:12px;
+  background:var(--paper);
+  color:var(--muted);
+  padding:11px 12px;
+}
+.document-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:14px;
+  padding:10px 13px;
+  border:1px solid rgba(68,121,78,.24);
+  border-radius:999px;
+  background:#edf3ea;
+  color:#36513b;
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+}
+.document-link:hover{background:#e1eddd}
+.document-note{
+  margin-top:8px;
+  color:#8a7158;
+  font-size:12px;
+  line-height:1.55;
+}
+
 @media(max-width:900px){.shelves{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){
   .hero{min-height:390px}
@@ -435,7 +466,7 @@ main{padding:26px 20px 60px}
   <div class="container">
     <div class="summary">
       <div><b id="resourceTotal">0</b><small>Resources</small></div>
-      <div><b>7</b><small>Shelves</small></div>
+      <div><b>7</b><small>Thematic shelves</small></div>
       <div><b>CCC</b><small>Academy 2026</small></div>
     </div>
 
@@ -479,94 +510,196 @@ const defaultShelves = [
     img:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=80&fit=crop",
     icon:"🌿",
     color:"linear-gradient(135deg,#dce9d7,#a9c69e)",
-    description:"Foundational ideas for understanding, caring for, and restoring the natural systems around us.",
+    description:"Different stewardship models, particularly in relation to strategic water source areas and community-based conservation approaches.",
     resources:[
       {
-        tag:"Starter Guide",
-        title:"Introduction to Environmental Stewardship",
-        summary:"A clear starting point for understanding what stewardship means in everyday environmental work.",
+        tag:"Priority Theme",
+        title:"Environmental Stewardship",
+        summary:"Priority 1 theme with 11 votes. Proposed for August 2026, led by MDF with INR, WWF and Wildtrust.",
         body:`
-          <p>Environmental stewardship means taking responsibility for the natural places, water systems, soil, plants, animals and communities that support life.</p>
-          <p>It is not only the work of scientists or conservation organisations. Stewardship happens whenever people notice environmental harm, understand its causes, and take practical steps to protect or restore what has been damaged.</p>
+          <p><strong>Theme focus:</strong> Different stewardship models, particularly in relation to strategic water source areas and community-based conservation approaches.</p>
+          <p>This shelf supports youth and junior staff to understand stewardship as practical responsibility for land, water, biodiversity and community-level conservation work.</p>
 
-          <h3>What stewardship looks like</h3>
+          <h3>Resource pack ideas</h3>
           <ul>
-            <li>Preventing litter and pollution from reaching rivers.</li>
-            <li>Protecting indigenous plants and removing invasive species.</li>
-            <li>Using water carefully and reporting leaks or contamination.</li>
-            <li>Helping communities understand how human behaviour affects the environment.</li>
+            <li>Simplified guide to stewardship models.</li>
+            <li>Strategic water source area explainers.</li>
+            <li>Community-based conservation examples.</li>
+            <li>Short glossary of stewardship terms and acronyms.</li>
           </ul>
 
-          <div class="callout"><strong>Core lesson:</strong> Stewardship begins when people stop seeing nature as somebody else’s responsibility.</div>
-        `
-      },
-      {
-        tag:"Core Concept",
-        title:"Understanding River Catchments",
-        summary:"How rainfall, land, communities and rivers connect within one shared system.",
-        body:`
-          <p>A river catchment is the area of land where rainfall flows towards the same river, stream, wetland or dam. What happens high up in the catchment eventually affects people and ecosystems downstream.</p>
-
-          <h3>Why catchments matter</h3>
-          <ul>
-            <li>Waste thrown into a stream can travel through many communities.</li>
-            <li>Damaged soil can wash into rivers and reduce water quality.</li>
-            <li>Healthy wetlands slow water, reduce flooding and filter pollution.</li>
-            <li>Good catchment management requires cooperation across neighbourhood and organisational boundaries.</li>
-          </ul>
-
-          <div class="callout"><strong>Think across boundaries:</strong> A river does not recognise municipal borders. Catchment work must connect people who share the same water system.</div>
+          <div class="callout"><strong>Webinar note:</strong> The CCC outline proposes 2-hour webinars, resource packs, short assessments, certificates of attendance and upload to the CCC website.</div>
         `
       }
     ]
   },
   {
-    title:"Catchment & River Health",
+    title:"Gender and Inclusion",
+    img:"https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80&fit=crop",
+    icon:"⚖️",
+    color:"linear-gradient(135deg,#efe0e7,#c8a4b5)",
+    description:"Introducing practical gender mainstreaming and gender equity considerations in environmental and community-based work.",
+    resources:[
+      {
+        tag:"Theme",
+        title:"Gender and Inclusion",
+        summary:"Practical gender mainstreaming and gender equity in environmental and community-based work.",
+        body:`
+          <p><strong>Theme focus:</strong> Introducing practical gender mainstreaming and gender equity considerations in environmental and community-based work.</p>
+          <p>This shelf helps participants understand inclusion not as a slogan, but as a practical way of designing meetings, projects, youth participation, fieldwork and decision-making.</p>
+
+          <h3>Resource pack ideas</h3>
+          <ul>
+            <li>Gender mainstreaming basics.</li>
+            <li>Inclusive facilitation checklist.</li>
+            <li>Gender equity examples in environmental projects.</li>
+            <li>Reflection questions for community engagement.</li>
+          </ul>
+
+          <div class="callout"><strong>Note:</strong> Gender received 0 votes in the first poll, but it remains an important CCC learning theme and should be kept visible.</div>
+        `
+      }
+    ]
+  },
+  {
+    title:"Climate-Resilient Agriculture",
+    img:"https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=900&q=80&fit=crop",
+    icon:"🌾",
+    color:"linear-gradient(135deg,#e9ead7,#c6c186)",
+    description:"Practical approaches such as agroecology, regenerative agriculture and related strategies that link livelihoods with environmental sustainability.",
+    resources:[
+      {
+        tag:"Priority Theme",
+        title:"Climate-Resilient Agriculture",
+        summary:"Priority theme with 7 votes. Focused on agroecology, regenerative agriculture and livelihoods linked to environmental sustainability.",
+        body:`
+          <p><strong>Theme focus:</strong> Practical approaches such as agroecology, regenerative agriculture and related strategies that link livelihoods with environmental sustainability.</p>
+          <p>This shelf connects food systems, farming practices, soil health, livelihoods and climate adaptation in a way that junior staff and youth participants can apply practically.</p>
+
+          <h3>Resource pack ideas</h3>
+          <ul>
+            <li>Agroecology basics.</li>
+            <li>Regenerative agriculture examples.</li>
+            <li>Soil health and water retention guides.</li>
+            <li>Local livelihood case studies.</li>
+          </ul>
+
+          <div class="callout"><strong>Proposed organiser:</strong> MDF.</div>
+        `
+      }
+    ]
+  },
+  {
+    title:"Sustainable Finance",
+    img:"https://images.unsplash.com/photo-1556761175-b413da4baf72?w=900&q=80&fit=crop",
+    icon:"💰",
+    color:"linear-gradient(135deg,#eee0cc,#d2ad73)",
+    description:"What sustainable finance means, different financial mechanisms, and examples within conservation and development sectors.",
+    resources:[
+      {
+        tag:"Priority Theme",
+        title:"Sustainable Finance",
+        summary:"Priority theme with 5 votes. Focused on financial mechanisms in conservation and development.",
+        body:`
+          <p><strong>Theme focus:</strong> What sustainable finance means, different financial mechanisms, and examples within the conservation and development sectors.</p>
+          <p>This shelf helps youth understand how environmental work can be funded, sustained and connected to long-term development outcomes.</p>
+
+          <h3>Resource pack ideas</h3>
+          <ul>
+            <li>Sustainable finance glossary.</li>
+            <li>Carbon credits and ecosystem services explainers.</li>
+            <li>Examples of conservation finance mechanisms.</li>
+            <li>Basic budgeting and project finance templates.</li>
+          </ul>
+
+          <div class="callout"><strong>Proposed organisers:</strong> DUCT as lead, with MDF.</div>
+        `
+      }
+    ]
+  },
+  {
+    title:"MERL",
+    img:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=80&fit=crop",
+    icon:"📊",
+    color:"linear-gradient(135deg,#e3dfeb,#aaa0c4)",
+    description:"What MERL is, the elements within MERL, and how to develop a MERL process for a project or programme.",
+    resources:[
+      {
+        tag:"Priority Theme",
+        title:"MERL",
+        summary:"Priority 2 theme with 10 votes. Proposed for November 2026, led by Hannah with AWARD.",
+        body:`
+          <p><strong>Theme focus:</strong> What MERL is, elements within MERL, and how to develop a MERL process for a project or programme.</p>
+          <p>MERL helps young practitioners understand how projects learn, track progress, report evidence, evaluate outcomes and adapt over time.</p>
+
+          <h3>Resource pack ideas</h3>
+          <ul>
+            <li>Monitoring, Evaluation, Reporting and Learning definitions.</li>
+            <li>Simple indicator examples.</li>
+            <li>Project learning log template.</li>
+            <li>Short assessment on MERL vocabulary and process.</li>
+          </ul>
+
+          <div class="callout"><strong>Poll note:</strong> MERL was added by participants as an additional theme and received 10 votes.</div>
+        `
+      }
+    ]
+  },
+  {
+    title:"Water Sector",
     img:"https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?w=900&q=80&fit=crop",
     icon:"💧",
     color:"linear-gradient(135deg,#dce9ed,#9ebdcc)",
-    description:"Practical knowledge about rivers, wetlands, water quality, pollution and restoration.",
-    resources:[]
+    description:"Understanding institutional arrangements, water services versus water resource management, and relationships between traditional authorities, municipalities and councillors.",
+    resources:[
+      {
+        tag:"Priority Theme",
+        title:"Water Sector",
+        summary:"Priority 3 theme with 10 votes. Proposed for February 2027, led by AWARD with MDF.",
+        body:`
+          <p><strong>Theme focus:</strong> Understanding institutional arrangements, water services versus water resource management, and the relationships between traditional authorities, municipalities and councillors.</p>
+          <p>This shelf gives young people language for understanding how water governance works, who is responsible for what, and why collaboration is necessary across institutions.</p>
+
+          <h3>Resource pack ideas</h3>
+          <ul>
+            <li>Water governance glossary.</li>
+            <li>Water services vs water resource management explainer.</li>
+            <li>Institutional roles map.</li>
+            <li>Catchment forum discussion guide.</li>
+          </ul>
+
+          <div class="callout"><strong>Proposed organisers:</strong> AWARD as lead, with MDF.</div>
+        `
+      }
+    ]
   },
   {
-    title:"Community & Collaboration",
-    img:"https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80&fit=crop",
-    icon:"🤝",
-    color:"linear-gradient(135deg,#eadfce,#c8aa7d)",
-    description:"Working across organisations, communities and catchments with trust and shared purpose.",
-    resources:[]
-  },
-  {
-    title:"Youth Leadership",
-    img:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80&fit=crop",
-    icon:"🌱",
-    color:"linear-gradient(135deg,#e3ead7,#b7c68d)",
-    description:"Helping young people develop confidence, responsibility, communication and leadership.",
-    resources:[]
-  },
-  {
-    title:"Climate & Sustainability",
-    img:"https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=900&q=80&fit=crop",
+    title:"Climate",
+    img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&q=80&fit=crop",
     icon:"🌍",
     color:"linear-gradient(135deg,#dbe7dc,#9fbd9e)",
-    description:"Understanding climate pressures and building practical, sustainable responses.",
-    resources:[]
-  },
-  {
-    title:"Enterprise & Livelihoods",
-    img:"https://images.unsplash.com/photo-1556761175-b413da4baf72?w=900&q=80&fit=crop",
-    icon:"🧭",
-    color:"linear-gradient(135deg,#eee0cc,#d2ad73)",
-    description:"Ideas for strengthening local livelihoods, enterprise and economic opportunity.",
-    resources:[]
-  },
-  {
-    title:"Reports, Guides & Toolkits",
-    img:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=80&fit=crop",
-    icon:"📚",
-    color:"linear-gradient(135deg,#e3dfeb,#aaa0c4)",
-    description:"Reference documents, practical guides, programme tools and learning resources.",
-    resources:[]
+    description:"Foundational climate concepts such as adaptation, mitigation and resilience, plus emerging topics such as carbon sequestration, carbon credits and financial mechanisms linked to ecosystem services.",
+    resources:[
+      {
+        tag:"Priority Theme",
+        title:"Climate Change",
+        summary:"Priority theme with 7 votes. Focused on adaptation, mitigation, resilience, carbon sequestration and ecosystem-service finance.",
+        body:`
+          <p><strong>Theme focus:</strong> Foundational concepts such as adaptation, mitigation and resilience, as well as emerging topics like carbon sequestration, carbon credits and financial mechanisms linked to ecosystem services.</p>
+          <p>This shelf helps youth and junior staff participate more confidently in climate conversations by translating technical climate language into accessible examples.</p>
+
+          <h3>Resource pack ideas</h3>
+          <ul>
+            <li>Adaptation, mitigation and resilience guide.</li>
+            <li>Carbon sequestration explainer.</li>
+            <li>Carbon credits and ecosystem services introduction.</li>
+            <li>Climate acronyms and key concepts glossary.</li>
+          </ul>
+
+          <div class="callout"><strong>Proposed organisers:</strong> MDF as lead, with SAEON/EFTEON.</div>
+        `
+      }
+    ]
   }
 ];
 
@@ -672,12 +805,14 @@ function openShelf(encodedTitle){
             <div class="form-field"><label>Tag</label><input id="newResourceTag" placeholder="e.g. Guide, Tool, Video, Notes"></div>
             <div class="form-field"><label>Short summary</label><textarea id="newResourceSummary" placeholder="Write one or two lines describing the resource."></textarea></div>
             <div class="form-field"><label>Full content / notes</label><textarea id="newResourceBody" placeholder="Paste notes, key points, links, instructions, or learning material here."></textarea></div>
+            <div class="form-field"><label>Document link</label><input id="newResourceDocLink" placeholder="Paste a Google Drive, Notion, website or PDF link"></div>
+            <div class="form-field"><label>Upload document</label><input id="newResourceFile" class="file-input" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.md,.jpg,.jpeg,.png"></div>
           </div>
           <div class="form-actions">
             <button class="form-submit" onclick="submitNewResource()">Save resource</button>
             <button class="form-cancel" onclick="toggleAddResourceForm(false)">Cancel</button>
           </div>
-          <div class="saved-note">Saved in this browser so the embedded Notion library can keep growing during use.</div>
+          <div class="saved-note">Saved in this browser. For shared team access, paste a Google Drive/Notion document link rather than relying only on a local upload.</div>
         </div>
       </div>
     `;
@@ -693,11 +828,21 @@ function openResource(index){
   if(!activeShelf || !activeShelf.resources[index]) return;
   const r = activeShelf.resources[index];
 
+  const docLink = r.docLink
+    ? `<a class="document-link" href="${escapeHTML(r.docLink)}" target="_blank" rel="noopener">📎 Open linked document</a>`
+    : "";
+  const uploadedDoc = r.fileData
+    ? `<a class="document-link" href="${r.fileData}" download="${escapeHTML(r.fileName || "resource-document")}">📄 Download uploaded document</a>
+       <div class="document-note">Uploaded file: ${escapeHTML(r.fileName || "document")}</div>`
+    : "";
+
   document.getElementById("resourceDetail").innerHTML = `
     <span class="detail-tag">${escapeHTML(r.tag)}</span>
     <h3 class="detail-title">${escapeHTML(r.title)}</h3>
     <div class="detail-sub">${escapeHTML(activeShelf.title)}</div>
     <div class="detail-body">${r.body}</div>
+    ${docLink}
+    ${uploadedDoc}
   `;
 
   document.getElementById("shelfView").style.display = "none";
@@ -719,12 +864,23 @@ function simpleBodyToHTML(value){
   return safe.split(/\n{2,}/).map(block=>`<p>${block.replace(/\n/g,"<br>")}</p>`).join("");
 }
 
-function submitNewResource(){
+function readFileAsDataURL(file){
+  return new Promise((resolve,reject)=>{
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function submitNewResource(){
   if(!activeShelf) return;
   const titleEl = document.getElementById("newResourceTitle");
   const tagEl = document.getElementById("newResourceTag");
   const summaryEl = document.getElementById("newResourceSummary");
   const bodyEl = document.getElementById("newResourceBody");
+  const docLinkEl = document.getElementById("newResourceDocLink");
+  const fileEl = document.getElementById("newResourceFile");
 
   const title = titleEl.value.trim();
   if(!title){ titleEl.focus(); return; }
@@ -733,8 +889,20 @@ function submitNewResource(){
     tag: tagEl.value.trim() || "Resource",
     title,
     summary: summaryEl.value.trim() || "New resource added through the library.",
-    body: simpleBodyToHTML(bodyEl.value)
+    body: simpleBodyToHTML(bodyEl.value),
+    docLink: docLinkEl.value.trim()
   };
+
+  const file = fileEl && fileEl.files && fileEl.files[0] ? fileEl.files[0] : null;
+  if(file){
+    if(file.size > 3 * 1024 * 1024){
+      alert("This file is quite large. Please upload it to Google Drive/Notion and paste the link instead.");
+      return;
+    }
+    resource.fileName = file.name;
+    resource.fileType = file.type;
+    resource.fileData = await readFileAsDataURL(file);
+  }
 
   activeShelf.resources.push(resource);
   saveAddedResource(activeShelf.title, resource);
