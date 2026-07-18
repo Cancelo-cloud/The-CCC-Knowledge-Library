@@ -30,13 +30,13 @@ body{
 button,input{font:inherit}
 button{cursor:pointer}
 .hero{
-  min-height:520px;
+  min-height:360px;
   display:grid;
   place-items:center;
   text-align:center;
   position:relative;
   overflow:hidden;
-  padding:70px 22px;
+  padding:42px 22px 34px;
   background:
     linear-gradient(rgba(89,70,43,.075) 1px,transparent 1px),
     linear-gradient(90deg,rgba(89,70,43,.075) 1px,transparent 1px),
@@ -73,7 +73,7 @@ h1{
   font-style:italic;
   color:#845d30;
   font-size:clamp(19px,2.3vw,29px);
-  margin:17px 0 34px;
+  margin:14px 0 22px;
 }
 .search-wrap{
   width:min(690px,94vw);
@@ -104,15 +104,15 @@ h1{
   color:#8c6d4c;
   font-size:17px;
 }
-main{padding:48px 20px 70px}
+main{padding:26px 20px 60px}
 .container{width:min(1180px,100%);margin:auto}
 .summary{
   display:flex;
   gap:38px;
   flex-wrap:wrap;
-  padding:0 0 28px;
+  padding:0 0 18px;
   border-bottom:1px solid var(--line);
-  margin-bottom:38px;
+  margin-bottom:22px;
 }
 .summary div{min-width:100px}
 .summary b{
@@ -145,7 +145,7 @@ main{padding:48px 20px 70px}
 .shelves{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:22px;
+  gap:16px;
 }
 .shelf-card{
   border:1px solid var(--line);
@@ -155,7 +155,7 @@ main{padding:48px 20px 70px}
   box-shadow:0 10px 26px rgba(65,45,24,.06);
   transition:transform .2s ease,box-shadow .2s ease;
   cursor:pointer;
-  min-height:270px;
+  min-height:220px;
   display:flex;
   flex-direction:column;
 }
@@ -164,9 +164,11 @@ main{padding:48px 20px 70px}
   box-shadow:var(--shadow);
 }
 .shelf-cover{
-  height:105px;
+  height:92px;
   position:relative;
   overflow:hidden;
+  background-size:cover!important;
+  background-position:center!important;
 }
 .shelf-cover:after{
   content:"";
@@ -179,12 +181,12 @@ main{padding:48px 20px 70px}
 }
 .shelf-icon{
   position:absolute;
-  left:22px;
-  bottom:17px;
+  left:16px;
+  bottom:12px;
   z-index:1;
-  font-size:37px;
+  font-size:30px;
 }
-.shelf-copy{padding:22px 22px 12px}
+.shelf-copy{padding:15px 16px 8px}
 .shelf-copy h3{
   font-family:Georgia,"Times New Roman",serif;
   font-size:24px;
@@ -199,14 +201,14 @@ main{padding:48px 20px 70px}
 }
 .shelf-count{
   margin-top:auto;
-  padding:0 22px 20px;
+  padding:0 16px 16px;
   color:#97764f;
   font-size:12px;
   text-transform:uppercase;
   letter-spacing:.08em;
 }
 .footer{
-  margin-top:55px;
+  margin-top:38px;
   padding-top:24px;
   border-top:1px solid var(--line);
   text-align:center;
@@ -388,9 +390,23 @@ main{padding:48px 20px 70px}
   text-align:center;
   color:var(--muted);
 }
+
+.add-resource-panel{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.add-resource-toggle{border:1px solid rgba(68,121,78,.28);background:#edf3ea;color:#36513b;border-radius:999px;padding:10px 14px;font-weight:700}
+.add-resource-form{display:none;margin-top:14px;border:1px solid var(--line);border-radius:16px;background:#fbf6ec;padding:16px}
+.add-resource-form.open{display:block}
+.form-grid{display:grid;gap:12px}
+.form-field label{display:block;margin-bottom:6px;color:#7c6752;font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.form-field input,.form-field textarea{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);padding:11px 12px;outline:none}
+.form-field textarea{min-height:92px;resize:vertical;line-height:1.6}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.form-submit,.form-cancel{border:1px solid var(--line);border-radius:999px;padding:9px 13px;background:#f7f0e1;color:#6c5134}
+.form-submit{background:#e7f1e4;color:#36513b;border-color:rgba(68,121,78,.28);font-weight:700}
+.saved-note{margin-top:9px;color:#6f8a57;font-size:12px}
+
 @media(max-width:900px){.shelves{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){
-  .hero{min-height:470px}
+  .hero{min-height:390px}
   .shelves{grid-template-columns:1fr}
   .summary{gap:24px}
   .section-head{align-items:flex-start;flex-direction:column}
@@ -457,9 +473,10 @@ main{padding:48px 20px 70px}
 </div>
 
 <script>
-const shelves = [
+const defaultShelves = [
   {
     title:"Environmental Stewardship",
+    img:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=80&fit=crop",
     icon:"🌿",
     color:"linear-gradient(135deg,#dce9d7,#a9c69e)",
     description:"Foundational ideas for understanding, caring for, and restoring the natural systems around us.",
@@ -505,6 +522,7 @@ const shelves = [
   },
   {
     title:"Catchment & River Health",
+    img:"https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?w=900&q=80&fit=crop",
     icon:"💧",
     color:"linear-gradient(135deg,#dce9ed,#9ebdcc)",
     description:"Practical knowledge about rivers, wetlands, water quality, pollution and restoration.",
@@ -512,6 +530,7 @@ const shelves = [
   },
   {
     title:"Community & Collaboration",
+    img:"https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80&fit=crop",
     icon:"🤝",
     color:"linear-gradient(135deg,#eadfce,#c8aa7d)",
     description:"Working across organisations, communities and catchments with trust and shared purpose.",
@@ -519,6 +538,7 @@ const shelves = [
   },
   {
     title:"Youth Leadership",
+    img:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80&fit=crop",
     icon:"🌱",
     color:"linear-gradient(135deg,#e3ead7,#b7c68d)",
     description:"Helping young people develop confidence, responsibility, communication and leadership.",
@@ -526,6 +546,7 @@ const shelves = [
   },
   {
     title:"Climate & Sustainability",
+    img:"https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=900&q=80&fit=crop",
     icon:"🌍",
     color:"linear-gradient(135deg,#dbe7dc,#9fbd9e)",
     description:"Understanding climate pressures and building practical, sustainable responses.",
@@ -533,6 +554,7 @@ const shelves = [
   },
   {
     title:"Enterprise & Livelihoods",
+    img:"https://images.unsplash.com/photo-1556761175-b413da4baf72?w=900&q=80&fit=crop",
     icon:"🧭",
     color:"linear-gradient(135deg,#eee0cc,#d2ad73)",
     description:"Ideas for strengthening local livelihoods, enterprise and economic opportunity.",
@@ -540,12 +562,32 @@ const shelves = [
   },
   {
     title:"Reports, Guides & Toolkits",
+    img:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=80&fit=crop",
     icon:"📚",
     color:"linear-gradient(135deg,#e3dfeb,#aaa0c4)",
     description:"Reference documents, practical guides, programme tools and learning resources.",
     resources:[]
   }
 ];
+
+const STORAGE_KEY = "ccc_field_library_added_resources_v1";
+const shelves = JSON.parse(JSON.stringify(defaultShelves));
+
+function loadAddedResources(){
+  try{
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+    shelves.forEach(s=>{
+      if(Array.isArray(saved[s.title])) s.resources.push(...saved[s.title]);
+    });
+  }catch(e){}
+}
+function saveAddedResource(shelfTitle, resource){
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+  if(!Array.isArray(saved[shelfTitle])) saved[shelfTitle] = [];
+  saved[shelfTitle].push(resource);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+}
+loadAddedResources();
 
 const grid = document.getElementById("shelvesGrid");
 const search = document.getElementById("searchInput");
@@ -583,7 +625,7 @@ function renderShelves(){
 
   grid.innerHTML = filtered.map(s=>`
     <article class="shelf-card" onclick="openShelf('${encodeURIComponent(s.title)}')">
-      <div class="shelf-cover" style="background:${s.color}">
+      <div class="shelf-cover" style="background:linear-gradient(rgba(38,24,15,.22),rgba(38,24,15,.22)),url('${s.img || ""}'),${s.color}">
         <div class="shelf-icon">${s.icon}</div>
       </div>
       <div class="shelf-copy">
@@ -601,13 +643,15 @@ function openShelf(encodedTitle){
   if(!shelf) return;
 
   activeShelf = shelf;
-  document.getElementById("modalTop").style.background = shelf.color;
+  document.getElementById("modalTop").style.background = `linear-gradient(rgba(255,253,248,.35),rgba(255,253,248,.35)),url('${shelf.img || ""}'),${shelf.color}`;
+  document.getElementById("modalTop").style.backgroundSize = "cover";
+  document.getElementById("modalTop").style.backgroundPosition = "center";
   document.getElementById("modalEyebrow").textContent = `${shelf.resources.length} resource${shelf.resources.length===1?"":"s"}`;
   document.getElementById("modalTitle").textContent = shelf.title;
   document.getElementById("shelfIntro").textContent = shelf.description;
 
   const list = document.getElementById("resourceList");
-  list.innerHTML = shelf.resources.length
+  list.innerHTML = (shelf.resources.length
     ? shelf.resources.map((r,i)=>`
       <article class="resource" onclick="openResource(${i})">
         <span class="resource-tag">${escapeHTML(r.tag)}</span>
@@ -618,7 +662,25 @@ function openShelf(encodedTitle){
         <span class="arrow">›</span>
       </article>
     `).join("")
-    : `<div class="coming-soon"><strong>Resources coming soon.</strong><br>This shelf is ready for the next CCC learning materials.</div>`;
+    : `<div class="coming-soon"><strong>Resources coming soon.</strong><br>This shelf is ready for the next CCC learning materials.</div>`)
+    + `
+      <div class="add-resource-panel">
+        <button class="add-resource-toggle" onclick="toggleAddResourceForm()">＋ Add resource</button>
+        <div class="add-resource-form" id="addResourceForm">
+          <div class="form-grid">
+            <div class="form-field"><label>Resource title</label><input id="newResourceTitle" placeholder="e.g. Wetland basics"></div>
+            <div class="form-field"><label>Tag</label><input id="newResourceTag" placeholder="e.g. Guide, Tool, Video, Notes"></div>
+            <div class="form-field"><label>Short summary</label><textarea id="newResourceSummary" placeholder="Write one or two lines describing the resource."></textarea></div>
+            <div class="form-field"><label>Full content / notes</label><textarea id="newResourceBody" placeholder="Paste notes, key points, links, instructions, or learning material here."></textarea></div>
+          </div>
+          <div class="form-actions">
+            <button class="form-submit" onclick="submitNewResource()">Save resource</button>
+            <button class="form-cancel" onclick="toggleAddResourceForm(false)">Cancel</button>
+          </div>
+          <div class="saved-note">Saved in this browser so the embedded Notion library can keep growing during use.</div>
+        </div>
+      </div>
+    `;
 
   document.getElementById("shelfView").style.display = "";
   document.getElementById("resourceView").style.display = "none";
@@ -641,6 +703,43 @@ function openResource(index){
   document.getElementById("shelfView").style.display = "none";
   document.getElementById("resourceView").style.display = "";
   document.getElementById("modalBox").scrollTop = 0;
+}
+
+
+function toggleAddResourceForm(force){
+  const form = document.getElementById("addResourceForm");
+  if(!form) return;
+  const shouldOpen = typeof force === "boolean" ? force : !form.classList.contains("open");
+  form.classList.toggle("open", shouldOpen);
+}
+
+function simpleBodyToHTML(value){
+  const safe = escapeHTML(value).trim();
+  if(!safe) return "<p>No detailed notes have been added yet.</p>";
+  return safe.split(/\n{2,}/).map(block=>`<p>${block.replace(/\n/g,"<br>")}</p>`).join("");
+}
+
+function submitNewResource(){
+  if(!activeShelf) return;
+  const titleEl = document.getElementById("newResourceTitle");
+  const tagEl = document.getElementById("newResourceTag");
+  const summaryEl = document.getElementById("newResourceSummary");
+  const bodyEl = document.getElementById("newResourceBody");
+
+  const title = titleEl.value.trim();
+  if(!title){ titleEl.focus(); return; }
+
+  const resource = {
+    tag: tagEl.value.trim() || "Resource",
+    title,
+    summary: summaryEl.value.trim() || "New resource added through the library.",
+    body: simpleBodyToHTML(bodyEl.value)
+  };
+
+  activeShelf.resources.push(resource);
+  saveAddedResource(activeShelf.title, resource);
+  openShelf(encodeURIComponent(activeShelf.title));
+  renderShelves();
 }
 
 function backToShelf(){
