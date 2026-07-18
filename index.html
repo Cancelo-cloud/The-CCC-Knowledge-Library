@@ -155,7 +155,7 @@ main{padding:26px 20px 60px}
   box-shadow:0 10px 26px rgba(65,45,24,.06);
   transition:transform .2s ease,box-shadow .2s ease;
   cursor:pointer;
-  min-height:220px;
+  min-height:260px;
   display:flex;
   flex-direction:column;
 }
@@ -164,7 +164,7 @@ main{padding:26px 20px 60px}
   box-shadow:var(--shadow);
 }
 .shelf-cover{
-  height:92px;
+  height:150px;
   position:relative;
   overflow:hidden;
   background-size:cover!important;
@@ -186,7 +186,7 @@ main{padding:26px 20px 60px}
   z-index:1;
   font-size:30px;
 }
-.shelf-copy{padding:15px 16px 8px}
+.shelf-copy{padding:16px 20px 10px}
 .shelf-copy h3{
   font-family:Georgia,"Times New Roman",serif;
   font-size:24px;
@@ -201,7 +201,7 @@ main{padding:26px 20px 60px}
 }
 .shelf-count{
   margin-top:auto;
-  padding:0 16px 16px;
+  padding:0 20px 18px;
   color:#97764f;
   font-size:12px;
   text-transform:uppercase;
@@ -398,7 +398,7 @@ main{padding:26px 20px 60px}
 .form-grid{display:grid;gap:12px}
 .form-field label{display:block;margin-bottom:6px;color:#7c6752;font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
 .form-field input,.form-field textarea{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);padding:11px 12px;outline:none}
-.form-field textarea{min-height:92px;resize:vertical;line-height:1.6}
+.form-field textarea{min-height:150px;resize:vertical;line-height:1.6}
 .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 .form-submit,.form-cancel{border:1px solid var(--line);border-radius:999px;padding:9px 13px;background:#f7f0e1;color:#6c5134}
 .form-submit{background:#e7f1e4;color:#36513b;border-color:rgba(68,121,78,.28);font-weight:700}
@@ -445,6 +445,12 @@ main{padding:26px 20px 60px}
   .modal-heading h2{font-size:31px}
   .detail-title{font-size:31px}
 }
+
+@media(max-width:620px){
+  .shelf-cover{height:160px}
+  .shelf-card{min-height:270px}
+}
+
 </style>
 </head>
 <body>
@@ -674,7 +680,7 @@ const defaultShelves = [
     ]
   },
   {
-    title:"Climate",
+    title:"Climate Change",
     img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&q=80&fit=crop",
     icon:"🌍",
     color:"linear-gradient(135deg,#dbe7dc,#9fbd9e)",
