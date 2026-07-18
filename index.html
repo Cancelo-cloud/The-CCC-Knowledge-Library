@@ -451,6 +451,27 @@ main{padding:26px 20px 60px}
   .shelf-card{min-height:270px}
 }
 
+
+/* Strong cover-image override for GitHub Pages / cached CSS */
+.shelf-card .shelf-cover{
+  height:190px !important;
+  min-height:190px !important;
+  background-size:cover !important;
+  background-position:center center !important;
+}
+@media(max-width:900px){
+  .shelf-card .shelf-cover{
+    height:180px !important;
+    min-height:180px !important;
+  }
+}
+@media(max-width:620px){
+  .shelf-card .shelf-cover{
+    height:170px !important;
+    min-height:170px !important;
+  }
+}
+
 </style>
 </head>
 <body>
