@@ -644,33 +644,6 @@ const defaultShelves = [
 ]
   },
   {
-    title:"Gender and Inclusion",
-    img:"https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80&fit=crop",
-    icon:"⚖️",
-    color:"linear-gradient(135deg,#efe0e7,#c8a4b5)",
-    description:"Introducing practical gender mainstreaming and gender equity considerations in environmental and community-based work.",
-    resources:[
-      {
-        tag:"Theme",
-        title:"Gender and Inclusion",
-        summary:"Practical gender mainstreaming and gender equity in environmental and community-based work.",
-        body:`
-          <p><strong>Theme focus:</strong> Introducing practical gender mainstreaming and gender equity considerations in environmental and community-based work.</p>
-          <p>This shelf helps participants understand inclusion not as a slogan, but as a practical way of designing meetings, projects, youth participation, fieldwork and decision-making.</p>
-
-          <h3>Resource pack ideas</h3>
-          <ul>
-            <li>Gender mainstreaming basics.</li>
-            <li>Inclusive facilitation checklist.</li>
-            <li>Gender equity examples in environmental projects.</li>
-            <li>Reflection questions for community engagement.</li>
-          </ul>
-
-          <div class="callout"><strong>Note:</strong> Gender received 0 votes in the first poll, but it remains an important CCC learning theme and should be kept visible.</div>
-        `
-      }
-    ]
-  },
   {
     title:"Climate-Resilient Agriculture",
     img:"https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=900&q=80&fit=crop",
@@ -837,7 +810,34 @@ const search = document.getElementById("searchInput");
 const clear = document.getElementById("searchClear");
 const modal = document.getElementById("modal");
 let activeShelf = null;
+  
+title:"Gender and Inclusion",
+    img:"https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80&fit=crop",
+    icon:"⚖️",
+    color:"linear-gradient(135deg,#efe0e7,#c8a4b5)",
+    description:"Introducing practical gender mainstreaming and gender equity considerations in environmental and community-based work.",
+    resources:[
+      {
+        tag:"Theme",
+        title:"Gender and Inclusion",
+        summary:"Practical gender mainstreaming and gender equity in environmental and community-based work.",
+        body:`
+          <p><strong>Theme focus:</strong> Introducing practical gender mainstreaming and gender equity considerations in environmental and community-based work.</p>
+          <p>This shelf helps participants understand inclusion not as a slogan, but as a practical way of designing meetings, projects, youth participation, fieldwork and decision-making.</p>
 
+          <h3>Resource pack ideas</h3>
+          <ul>
+            <li>Gender mainstreaming basics.</li>
+            <li>Inclusive facilitation checklist.</li>
+            <li>Gender equity examples in environmental projects.</li>
+            <li>Reflection questions for community engagement.</li>
+          </ul>
+
+          <div class="callout"><strong>Note:</strong> Gender received 0 votes in the first poll, but it remains an important CCC learning theme and should be kept visible.</div>
+        `
+      }
+    ]
+  },
 function escapeHTML(value){
   return String(value ?? "").replace(/[&<>"']/g,ch=>({
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
