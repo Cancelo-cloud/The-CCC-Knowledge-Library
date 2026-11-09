@@ -1,1 +1,1064 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CCC Knowledge Library</title>
+<style>
+:root{
+  --cream:#f5efdf;
+  --cream2:#ebe0c8;
+  --paper:#fffdf8;
+  --ink:#26180f;
+  --muted:#7c6752;
+  --line:#d8cbb5;
+  --brown:#8f6945;
+  --green:#44794e;
+  --sage:#8aa07b;
+  --gold:#b98b4d;
+  --blue:#5e7896;
+  --shadow:0 20px 50px rgba(61,42,20,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+}
+button,input{font:inherit}
+button{cursor:pointer}
+.hero{
+  min-height:360px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  padding:42px 22px 34px;
+  background:
+    linear-gradient(rgba(89,70,43,.075) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(89,70,43,.075) 1px,transparent 1px),
+    radial-gradient(circle at 50% 15%,rgba(255,255,255,.7),transparent 48%),
+    linear-gradient(115deg,#f7f1e2,#ded0b6);
+  background-size:110px 110px,110px 110px,auto,auto;
+}
+.hero:before,.hero:after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(117,88,53,.16);
+}
+.hero:before{width:340px;height:340px;left:-190px;bottom:-170px}
+.hero:after{width:290px;height:290px;right:-150px;top:-130px}
+.hero-content{position:relative;z-index:2;width:min(100%,980px)}
+.eyebrow{
+  color:#94704d;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-size:13px;
+  font-weight:700;
+  margin:0 0 20px;
+}
+h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(48px,7.5vw,86px);
+  font-weight:400;
+  line-height:1;
+  margin:0;
+}
+.hero-sub{
+  font-family:Georgia,"Times New Roman",serif;
+  font-style:italic;
+  color:#845d30;
+  font-size:clamp(19px,2.3vw,29px);
+  margin:14px 0 22px;
+}
+.search-wrap{
+  width:min(690px,94vw);
+  margin:auto;
+  background:rgba(255,253,248,.96);
+  border:1px solid rgba(125,96,61,.25);
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 20px;
+  box-shadow:0 10px 30px rgba(64,42,17,.08);
+}
+.search-icon{font-size:25px;color:#96714d}
+.search-input{
+  flex:1;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:var(--ink);
+  font-size:18px;
+  padding:19px 4px;
+}
+.search-input::placeholder{color:#b6966f}
+.search-clear{
+  border:0;
+  background:transparent;
+  color:#8c6d4c;
+  font-size:17px;
+}
+main{padding:26px 20px 60px}
+.container{width:min(1180px,100%);margin:auto}
+.summary{
+  display:flex;
+  gap:38px;
+  flex-wrap:wrap;
+  padding:0 0 18px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:22px;
+}
+.summary div{min-width:100px}
+.summary b{
+  display:block;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:29px;
+  font-weight:400;
+}
+.summary small{
+  display:block;
+  margin-top:4px;
+  color:#967652;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:flex-end;
+  margin-bottom:22px;
+}
+.section-head h2{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:36px;
+  font-weight:400;
+}
+.section-head span{color:var(--muted);font-size:13px}
+.shelves{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.shelf-card{
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:var(--paper);
+  overflow:hidden;
+  box-shadow:0 10px 26px rgba(65,45,24,.06);
+  transition:transform .2s ease,box-shadow .2s ease;
+  cursor:pointer;
+  min-height:260px;
+  display:flex;
+  flex-direction:column;
+}
+.shelf-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
+}
+.shelf-cover{
+  height:150px;
+  position:relative;
+  overflow:hidden;
+  background-size:cover!important;
+  background-position:center!important;
+}
+.shelf-cover:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+.shelf-icon{
+  position:absolute;
+  left:16px;
+  bottom:12px;
+  z-index:1;
+  font-size:30px;
+}
+.shelf-copy{padding:16px 20px 10px}
+.shelf-copy h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:24px;
+  font-weight:400;
+  margin:0 0 9px;
+}
+.shelf-copy p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.65;
+  font-size:14px;
+}
+.shelf-count{
+  margin-top:auto;
+  padding:0 20px 18px;
+  color:#97764f;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.footer{
+  margin-top:38px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+  text-align:center;
+  color:#8a7259;
+  font-size:13px;
+}
+.empty{
+  grid-column:1/-1;
+  padding:45px;
+  text-align:center;
+  border:1px dashed var(--line);
+  border-radius:18px;
+  color:var(--muted);
+}
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(30,20,12,.67);
+  backdrop-filter:blur(5px);
+  z-index:50;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+.modal.open{display:flex}
+.modal-box{
+  width:min(900px,100%);
+  max-height:92vh;
+  overflow:auto;
+  background:var(--paper);
+  border-radius:24px;
+  box-shadow:0 35px 90px rgba(0,0,0,.35);
+}
+.modal-top{
+  min-height:150px;
+  padding:27px;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+}
+.modal-top:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.10) 1px,transparent 1px);
+  background-size:36px 36px;
+}
+.modal-heading{position:relative;z-index:1}
+.modal-heading small{
+  display:block;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.modal-heading h2{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:38px;
+  font-weight:400;
+}
+.modal-close{
+  position:absolute;
+  right:18px;
+  top:18px;
+  z-index:2;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:1px solid rgba(40,25,10,.16);
+  background:rgba(255,255,255,.78);
+  color:var(--ink);
+  font-size:20px;
+}
+.modal-content{padding:26px}
+.shelf-intro{
+  color:#6f5c48;
+  line-height:1.75;
+  padding-bottom:22px;
+  border-bottom:1px solid var(--line);
+}
+.resource-list{display:grid;gap:13px;margin-top:22px}
+.resource{
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px 17px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:14px;
+  align-items:start;
+  cursor:pointer;
+  transition:background .18s ease,transform .18s ease;
+}
+.resource:hover{
+  background:#fbf5e8;
+  transform:translateX(3px);
+}
+.resource-tag{
+  font-size:9px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+  padding:4px 7px;
+  background:#efe5d2;
+  color:#956f43;
+  border-radius:5px;
+}
+.resource h4{
+  margin:0 0 5px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:19px;
+  font-weight:400;
+}
+.resource p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.55;
+  font-size:13px;
+}
+.arrow{color:#96714b;font-size:22px}
+.back-btn{
+  border:1px solid var(--line);
+  background:#f7f0e1;
+  color:#6c5134;
+  border-radius:999px;
+  padding:9px 13px;
+  margin-bottom:20px;
+}
+.detail-tag{
+  display:inline-block;
+  padding:5px 8px;
+  border-radius:5px;
+  background:#efe5d2;
+  color:#8e6740;
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.detail-title{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:36px;
+  font-weight:400;
+  margin:14px 0 8px;
+}
+.detail-sub{
+  color:#8a7158;
+  margin-bottom:23px;
+}
+.detail-body{
+  color:#493a2c;
+  line-height:1.82;
+  font-size:16px;
+}
+.detail-body h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:24px;
+  font-weight:400;
+  color:var(--ink);
+  margin:28px 0 10px;
+}
+.detail-body ul{padding-left:22px}
+.detail-body li{margin-bottom:8px}
+.callout{
+  margin-top:24px;
+  border-left:4px solid var(--green);
+  background:#edf3ea;
+  border-radius:0 13px 13px 0;
+  padding:16px 18px;
+  color:#36513b;
+}
+.coming-soon{
+  padding:28px;
+  border:1px dashed var(--line);
+  border-radius:16px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.add-resource-panel{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.add-resource-toggle{border:1px solid rgba(68,121,78,.28);background:#edf3ea;color:#36513b;border-radius:999px;padding:10px 14px;font-weight:700}
+.add-resource-form{display:none;margin-top:14px;border:1px solid var(--line);border-radius:16px;background:#fbf6ec;padding:16px}
+.add-resource-form.open{display:block}
+.form-grid{display:grid;gap:12px}
+.form-field label{display:block;margin-bottom:6px;color:#7c6752;font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.form-field input,.form-field textarea{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);padding:11px 12px;outline:none}
+.form-field textarea{min-height:150px;resize:vertical;line-height:1.6}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.form-submit,.form-cancel{border:1px solid var(--line);border-radius:999px;padding:9px 13px;background:#f7f0e1;color:#6c5134}
+.form-submit{background:#e7f1e4;color:#36513b;border-color:rgba(68,121,78,.28);font-weight:700}
+.saved-note{margin-top:9px;color:#6f8a57;font-size:12px}
+
+
+.file-input{
+  width:100%;
+  border:1px dashed var(--line);
+  border-radius:12px;
+  background:var(--paper);
+  color:var(--muted);
+  padding:11px 12px;
+}
+.document-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:14px;
+  padding:10px 13px;
+  border:1px solid rgba(68,121,78,.24);
+  border-radius:999px;
+  background:#edf3ea;
+  color:#36513b;
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+}
+.document-link:hover{background:#e1eddd}
+.document-note{
+  margin-top:8px;
+  color:#8a7158;
+  font-size:12px;
+  line-height:1.55;
+}
+
+@media(max-width:900px){.shelves{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){
+  .hero{min-height:390px}
+  .shelves{grid-template-columns:1fr}
+  .summary{gap:24px}
+  .section-head{align-items:flex-start;flex-direction:column}
+  .modal-top{min-height:130px}
+  .modal-heading h2{font-size:31px}
+  .detail-title{font-size:31px}
+}
+
+@media(max-width:620px){
+  .shelf-cover{height:160px}
+  .shelf-card{min-height:270px}
+}
+
+
+/* Strong cover-image override for GitHub Pages / cached CSS */
+.shelf-card .shelf-cover{
+  height:190px !important;
+  min-height:190px !important;
+  background-size:cover !important;
+  background-position:center center !important;
+}
+@media(max-width:900px){
+  .shelf-card .shelf-cover{
+    height:180px !important;
+    min-height:180px !important;
+  }
+}
+@media(max-width:620px){
+  .shelf-card .shelf-cover{
+    height:170px !important;
+    min-height:170px !important;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">Cross-Catchment Collective</p>
+    <h1>The CCC Knowledge Library</h1>
+    <p class="hero-sub">Where learning takes root</p>
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input id="searchInput" class="search-input" type="text" placeholder="Search shelves, topics, guides, concepts…" autocomplete="off">
+      <button class="search-clear" id="searchClear" aria-label="Clear search" style="display:none">✕</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="summary">
+      <div><b id="resourceTotal">0</b><small>Resources</small></div>
+      <div><b>7</b><small>Thematic shelves</small></div>
+      <div><b>CCC</b><small>Academy 2026</small></div>
+    </div>
+
+    <div class="section-head">
+      <h2>Knowledge Shelves</h2>
+      <span>Open a shelf to explore its resources</span>
+    </div>
+
+    <section class="shelves" id="shelvesGrid"></section>
+
+    <div class="footer">CCC Knowledge Library · Built by <strong>Green Beacons</strong> · 2026</div>
+  </div>
+</main>
+
+<div class="modal" id="modal">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-top" id="modalTop">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-heading">
+        <small id="modalEyebrow"></small>
+        <h2 id="modalTitle"></h2>
+      </div>
+    </div>
+    <div class="modal-content">
+      <div id="shelfView">
+        <p class="shelf-intro" id="shelfIntro"></p>
+        <div class="resource-list" id="resourceList"></div>
+      </div>
+      <div id="resourceView" style="display:none">
+        <button class="back-btn" onclick="backToShelf()">← Back to shelf</button>
+        <div id="resourceDetail"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const defaultShelves = [
+  {
+    title:"Environmental Stewardship",
+    img:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=80&fit=crop",
+    icon:"🌿",
+    color:"linear-gradient(135deg,#dce9d7,#a9c69e)",
+    description:"Different stewardship models, particularly in relation to strategic water source areas and community-based conservation approaches.",
+    resources:[
+  {
+    tag:"Presentation",
+    title:"Environmental Management — Session 1 presentation",
+    summary:"The slide deck for CCC Academy Module 1. Use it alongside the resource pack and webinar recording.",
+    body:`
+      <p>Presentation for the Environmental Management and Land Use session.</p>
+      <p>Use the slides alongside the readings in this shelf to revisit the webinar’s main concepts.</p>
+      <a class="document-link" href="PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE" target="_blank" rel="noopener">📎 Open Session 1 presentation (PPTX)</a>
+    `
+  },
+  {
+    tag:"Legislation",
+    title:"Core environmental and land-use legislation",
+    summary:"Key South African laws and policy resources for environmental rights, biodiversity, water, protected areas, spatial planning, soil and fire management.",
+    body:`
+      <p>These resources introduce the legal foundations for environmental management and land use in South Africa.</p>
+      <ul>
+        <li><a href="./assets/environmental-stewardship/national-biodiversity-strategy-2026-2036.pdf" target="_blank" rel="noopener">DFFE — National Biodiversity Strategy and Action Plan 2026–2036 (PDF)</a></li>
+        <li><a href="https://www.dpme.gov.za/publications/Constitution/Constitution%20of%20the%20Republic%20of%20S.A.pdf" target="_blank" rel="noopener">Constitution of the Republic of South Africa, 1996 — Section 24</a></li>
+        <li><a href="https://www.gov.za/documents/national-environmental-management-act" target="_blank" rel="noopener">National Environmental Management Act (NEMA) 107 of 1998</a></li>
+        <li><a href="https://www.gov.za/documents/national-water-act" target="_blank" rel="noopener">National Water Act 36 of 1998</a></li>
+        <li><a href="https://www.gov.za/documents/national-environmental-management-biodiversity-act-0" target="_blank" rel="noopener">National Environmental Management: Biodiversity Act (NEMBA) 10 of 2004</a></li>
+        <li><a href="https://www.gov.za/documents/national-environmental-management-protected-areas-act" target="_blank" rel="noopener">National Environmental Management: Protected Areas Act (NEMPAA) 57 of 2003</a></li>
+        <li><a href="https://www.gov.za/documents/spatial-planning-and-land-use-management-act" target="_blank" rel="noopener">Spatial Planning and Land Use Management Act (SPLUMA) 16 of 2013</a></li>
+        <li><a href="https://www.gov.za/documents/conservation-agricultural-resources-act-1-apr-2015-0926" target="_blank" rel="noopener">Conservation of Agricultural Resources Act (CARA) 43 of 1983</a></li>
+        <li><a href="https://www.gov.za/documents/national-veld-and-forest-act" target="_blank" rel="noopener">National Veld and Forest Fire Act 101 of 1998</a></li>
+      </ul>
+    `
+  },
+  {
+    tag:"Guides & reports",
+    title:"Water, biodiversity and stewardship",
+    summary:"Explore strategic water source areas, biodiversity stewardship, sustainable development and shared responsibility for natural resources.",
+    body:`
+      <p>These resources connect water security, biodiversity, stewardship approaches and sustainable development.</p>
+      <ul>
+        <li><a href="./assets/environmental-stewardship/strategic-water-source-areas.pdf" target="_blank" rel="noopener">WWF — Defining South Africa’s Strategic Water Source Areas (PDF)</a> — Why these landscapes matter for river flow and downstream water security, and the threats they face.</li>
+        <li><a href="./assets/environmental-stewardship/biodiversity-stewardship-case-study-giz-2025.pdf" target="_blank" rel="noopener">IKI / GIZ — South Africa’s Biodiversity Stewardship Programme: case study (2025, PDF)</a> — Voluntary agreements, protected areas, livelihoods and conservation outcomes.</li>
+        <li><a href="https://www.britannica.com/topic/Brundtland-Report" target="_blank" rel="noopener">Britannica — Brundtland Report</a> — A short introduction to the 1987 report and its definition of sustainable development.</li>
+        <li><a href="https://www.un.org/en/exhibits/page/sdgs-17-goals-transform-world" target="_blank" rel="noopener">United Nations — The 17 Sustainable Development Goals</a></li>
+        <li><a href="./assets/environmental-stewardship/climate-dictionary-nature-edition.pdf" target="_blank" rel="noopener">Climate Dictionary — Nature Edition (PDF)</a> — Accessible explanations of nature and climate terms.</li>
+        <li><a href="https://www.wwf.org.za/our_work/water/" target="_blank" rel="noopener">WWF South Africa — Water programme</a></li>
+        <li><a href="https://www.wwf.org.za/our_work/initiatives/water_stewardship/" target="_blank" rel="noopener">WWF South Africa — Water stewardship initiative</a></li>
+        <li><a href="https://www.engineeringnews.co.za/article/sappi-and-wwf-south-africa-champion-water-management-as-key-to-bio-economy-resilience-2026-03-26" target="_blank" rel="noopener">Engineering News — Sappi and WWF South Africa on water management</a></li>
+        <li><a href="https://www.sanbi.org/biodiversity/science-into-policy-action/mainstreaming-biodiversity/biodiversity-and-land-use-project/biodiversity-stewardship/" target="_blank" rel="noopener">SANBI — Biodiversity stewardship</a></li>
+        <li><a href="./assets/environmental-stewardship/sanbi-biodiversity-stewardship-communities.pdf" target="_blank" rel="noopener">SANBI — Biodiversity stewardship for communities (PDF)</a></li>
+        <li><a href="./assets/environmental-stewardship/sanbi-stewardship-partnerships.pdf" target="_blank" rel="noopener">SANBI — Biodiversity Stewardship: Partnerships for securing biodiversity (PDF)</a></li>
+        <li><a href="./assets/environmental-stewardship/biodiversity-stewardship-community-factsheet-2020.pdf" target="_blank" rel="noopener">SANBI — Biodiversity Stewardship Community Factsheet (2020, PDF)</a></li>
+      </ul>
+    `
+  },
+  {
+    tag:"Practical guides",
+    title:"Restoration and regenerative practice",
+    summary:"Practical examples of wetland restoration, invasive-plant clearing, erosion control, land rehabilitation and regenerative agriculture.",
+    body:`
+      <p>These resources show environmental management in practice, from ecosystem restoration to land-care and rangeland approaches.</p>
+      <ul>
+        <li><a href="./assets/environmental-stewardship/wwf-nature-based-solutions-climate-2020.pdf" target="_blank" rel="noopener">WWF — Nature-based solutions for climate change (2020, PDF)</a> — Ecosystem approaches to climate risk, carbon storage and community benefits, with safeguards for good practice.</li>
+        <li><a href="https://ser-rrc.org/what-is-ecological-restoration/" target="_blank" rel="noopener">Society for Ecological Restoration — What is ecological restoration?</a></li>
+        <li><a href="https://www.dffe.gov.za/WorkingforWetlands" target="_blank" rel="noopener">DFFE — Working for Wetlands</a></li>
+        <li><a href="https://www.dffe.gov.za/working-water-wfw-programme" target="_blank" rel="noopener">DFFE — Working for Water</a></li>
+        <li><a href="https://www.vetiver.co.za/vetiver-grass-faq/" target="_blank" rel="noopener">Vetiver Grass SA — Vetiver grass FAQ</a></li>
+        <li><a href="https://www.nda.gov.za/index.php/publication/498-landcare-frequently-asked-questions" target="_blank" rel="noopener">LandCare South Africa — Land degradation FAQ</a></li>
+        <li><a href="https://www.regenz.co.za/blog/regenerative-agriculture-south-africa" target="_blank" rel="noopener">RegenZ — Regenerative agriculture in South Africa</a></li>
+        <li><a href="https://www.meatnaturallyafrica.com/about/" target="_blank" rel="noopener">Meat Naturally Africa — About us</a> — Rangeland stewardship and livestock-linked conservation.</li>
+        <li><a href="https://www.africanfarming.com/2026/07/11/conservation-model-unlocks-r134-million-for-communal-livestock-farmers/" target="_blank" rel="noopener">African Farming — Meat Naturally model</a></li>
+      </ul>
+    `
+  },
+  {
+    tag:"Planning & catchments",
+    title:"Planning, land use and catchments",
+    summary:"Plain-language resources on land cover, land-use planning, catchment governance, conservation areas and communal land rights.",
+    body:`
+      <p>Use these introductions to understand how land-use decisions, catchment governance and conservation approaches connect.</p>
+      <ul>
+        <li><a href="https://www.privateproperty.co.za/advice/property/articles/what-is-spluma/6860" target="_blank" rel="noopener">Private Property — What is SPLUMA?</a></li>
+        <li><a href="https://www.customcontested.co.za/laws-and-policies/the-spatial-planning-and-land-use-management-act-spluma/" target="_blank" rel="noopener">Custom Contested — SPLUMA overview</a></li>
+        <li><a href="https://oceanservice.noaa.gov/facts/lclu.html" target="_blank" rel="noopener">NOAA — Land cover and land use</a></li>
+        <li><a href="https://www.sanews.gov.za/africa-south-africa/new-catchment-management-agencies-ensure-good-water-governance" target="_blank" rel="noopener">SAnews — Catchment Management Agencies</a></li>
+        <li><a href="https://www.worldwildlife.org/news/stories/oecms-a-new-paradigm-for-area-based-conservation/" target="_blank" rel="noopener">WWF — Other Effective area-based Conservation Measures (OECMs)</a></li>
+        <li><a href="https://lrc.org.za/communal-land-rights-act/" target="_blank" rel="noopener">Legal Resources Centre — Communal land rights</a></li>
+      </ul>
+    `
+  },
+  {
+    tag:"Participation & learning",
+    title:"Participation and adaptive management",
+    summary:"Practical guidance on participation, local knowledge, shared decision-making and learning by doing.",
+    body:`
+      <p>Environmental management works best when people help shape decisions and teams learn from experience. These resources introduce participatory planning and adaptive management.</p>
+      <ul>
+        <li><a href="https://ctb.ku.edu/en/table-of-contents/analyze/where-to-start/participatory-approaches/main" target="_blank" rel="noopener">Community Tool Box — Participatory approaches</a></li>
+        <li><a href="https://platteriverprogram.org/about/adaptive-management" target="_blank" rel="noopener">Platte River Program — About adaptive management</a></li>
+        <li><a href="https://extension.psu.edu/engaging-community-members-in-participatory-planning-processes-part-one" target="_blank" rel="noopener">Penn State Extension — Engaging community members</a></li>
+        <li><a href="https://www.numberanalytics.com/blog/ultimate-guide-participatory-planning" target="_blank" rel="noopener">Number Analytics — Participatory planning guide</a></li>
+        <li><a href="https://www.studysmarter.co.uk/explanations/architecture/land-and-property-management/participatory-planning/" target="_blank" rel="noopener">StudySmarter — Participatory planning</a></li>
+        <li><a href="https://cajnewsafrica.com/2026/05/15/meat-naturally-africa-transforms-communal-farming/" target="_blank" rel="noopener">CAJ News Africa — Meat Naturally Africa</a></li>
+      </ul>
+    `
+  }
+]
+  },
+  {
+    title:"Gender and Inclusion",
+    img:"https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80&fit=crop",
+    icon:"⚖️",
+    color:"linear-gradient(135deg,#efe0e7,#c8a4b5)",
+    description:"Introducing practical gender mainstreaming and gender equity considerations in environmental and community-based work.",
+    resources:[
+      {
+        tag:"Theme",
+        title:"Gender and Inclusion",
+        summary:"Practical gender mainstreaming and gender equity in environmental and community-based work.",
+        body:`
+          <p><strong>Theme focus:</strong> Introducing practical gender mainstreaming and gender equity considerations in environmental and community-based work.</p>
+          <p>This shelf helps participants understand inclusion not as a slogan, but as a practical way of designing meetings, projects, youth participation, fieldwork and decision-making.</p>
+
+          <h3>Resource pack ideas</h3>
+          <ul>
+            <li>Gender mainstreaming basics.</li>
+            <li>Inclusive facilitation checklist.</li>
+            <li>Gender equity examples in environmental projects.</li>
+            <li>Reflection questions for community engagement.</li>
+          </ul>
+
+          <div class="callout"><strong>Note:</strong> Gender received 0 votes in the first poll, but it remains an important CCC learning theme and should be kept visible.</div>
+        `
+      }
+    ]
+  },
+  {
+    title:"Climate-Resilient Agriculture",
+    img:"https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=900&q=80&fit=crop",
+    icon:"🌾",
+    color:"linear-gradient(135deg,#e9ead7,#c6c186)",
+    description:"Practical approaches such as agroecology, regenerative agriculture and related strategies that link livelihoods with environmental sustainability.",
+    resources:[
+      {
+        tag:"Priority Theme",
+        title:"Climate-Resilient Agriculture",
+        summary:"Priority theme with 7 votes. Focused on agroecology, regenerative agriculture and livelihoods linked to environmental sustainability.",
+        body:`
+          <p><strong>Theme focus:</strong> Practical approaches such as agroecology, regenerative agriculture and related strategies that link livelihoods with environmental sustainability.</p>
+          <p>This shelf connects food systems, farming practices, soil health, livelihoods and climate adaptation in a way that junior staff and youth participants can apply practically.</p>
+
+          <h3>Resource pack ideas</h3>
+          <ul>
+            <li>Agroecology basics.</li>
+            <li>Regenerative agriculture examples.</li>
+            <li>Soil health and water retention guides.</li>
+            <li>Local livelihood case studies.</li>
+          </ul>
+
+          <div class="callout"><strong>Proposed organiser:</strong> MDF.</div>
+        `
+      }
+    ]
+  },
+  {
+    title:"Sustainable Finance",
+    img:"https://images.unsplash.com/photo-1556761175-b413da4baf72?w=900&q=80&fit=crop",
+    icon:"💰",
+    color:"linear-gradient(135deg,#eee0cc,#d2ad73)",
+    description:"What sustainable finance means, different financial mechanisms, and examples within conservation and development sectors.",
+    resources:[
+      {
+        tag:"Priority Theme",
+        title:"Sustainable Finance",
+        summary:"Priority theme with 5 votes. Focused on financial mechanisms in conservation and development.",
+        body:`
+          <p><strong>Theme focus:</strong> What sustainable finance means, different financial mechanisms, and examples within the conservation and development sectors.</p>
+          <p>This shelf helps youth understand how environmental work can be funded, sustained and connected to long-term development outcomes.</p>
+
+          <h3>Resource pack ideas</h3>
+          <ul>
+            <li>Sustainable finance glossary.</li>
+            <li>Carbon credits and ecosystem services explainers.</li>
+            <li>Examples of conservation finance mechanisms.</li>
+            <li>Basic budgeting and project finance templates.</li>
+          </ul>
+
+          <div class="callout"><strong>Proposed organisers:</strong> DUCT as lead, with MDF.</div>
+        `
+      }
+    ]
+  },
+  {
+    title:"MERL",
+    img:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=80&fit=crop",
+    icon:"📊",
+    color:"linear-gradient(135deg,#e3dfeb,#aaa0c4)",
+    description:"What MERL is, the elements within MERL, and how to develop a MERL process for a project or programme.",
+    resources:[
+      {
+        tag:"Priority Theme",
+        title:"MERL",
+        summary:"Priority 2 theme with 10 votes. Proposed for November 2026, led by Hannah with AWARD.",
+        body:`
+          <p><strong>Theme focus:</strong> What MERL is, elements within MERL, and how to develop a MERL process for a project or programme.</p>
+          <p>MERL helps young practitioners understand how projects learn, track progress, report evidence, evaluate outcomes and adapt over time.</p>
+
+          <h3>Resource pack ideas</h3>
+          <ul>
+            <li>Monitoring, Evaluation, Reporting and Learning definitions.</li>
+            <li>Simple indicator examples.</li>
+            <li>Project learning log template.</li>
+            <li>Short assessment on MERL vocabulary and process.</li>
+          </ul>
+
+          <div class="callout"><strong>Poll note:</strong> MERL was added by participants as an additional theme and received 10 votes.</div>
+        `
+      }
+    ]
+  },
+  {
+    title:"Water Sector",
+    img:"https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?w=900&q=80&fit=crop",
+    icon:"💧",
+    color:"linear-gradient(135deg,#dce9ed,#9ebdcc)",
+    description:"Understanding institutional arrangements, water services versus water resource management, and relationships between traditional authorities, municipalities and councillors.",
+    resources:[
+      {
+        tag:"Priority Theme",
+        title:"Water Sector",
+        summary:"Priority 3 theme with 10 votes. Proposed for February 2027, led by AWARD with MDF.",
+        body:`
+          <p><strong>Theme focus:</strong> Understanding institutional arrangements, water services versus water resource management, and the relationships between traditional authorities, municipalities and councillors.</p>
+          <p>This shelf gives young people language for understanding how water governance works, who is responsible for what, and why collaboration is necessary across institutions.</p>
+
+          <h3>Resource pack ideas</h3>
+          <ul>
+            <li>Water governance glossary.</li>
+            <li>Water services vs water resource management explainer.</li>
+            <li>Institutional roles map.</li>
+            <li>Catchment forum discussion guide.</li>
+          </ul>
+
+          <div class="callout"><strong>Proposed organisers:</strong> AWARD as lead, with MDF.</div>
+        `
+      }
+    ]
+  },
+  {
+    title:"Climate Change",
+    img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&q=80&fit=crop",
+    icon:"🌍",
+    color:"linear-gradient(135deg,#dbe7dc,#9fbd9e)",
+    description:"Foundational climate concepts such as adaptation, mitigation and resilience, plus emerging topics such as carbon sequestration, carbon credits and financial mechanisms linked to ecosystem services.",
+    resources:[
+      {
+        tag:"Priority Theme",
+        title:"Climate Change",
+        summary:"Priority theme with 7 votes. Focused on adaptation, mitigation, resilience, carbon sequestration and ecosystem-service finance.",
+        body:`
+          <p><strong>Theme focus:</strong> Foundational concepts such as adaptation, mitigation and resilience, as well as emerging topics like carbon sequestration, carbon credits and financial mechanisms linked to ecosystem services.</p>
+          <p>This shelf helps youth and junior staff participate more confidently in climate conversations by translating technical climate language into accessible examples.</p>
+
+          <h3>Resource pack ideas</h3>
+          <ul>
+            <li>Adaptation, mitigation and resilience guide.</li>
+            <li>Carbon sequestration explainer.</li>
+            <li>Carbon credits and ecosystem services introduction.</li>
+            <li>Climate acronyms and key concepts glossary.</li>
+          </ul>
+
+          <div class="callout"><strong>Proposed organisers:</strong> MDF as lead, with SAEON/EFTEON.</div>
+        `
+      }
+    ]
+  }
+]; 
+
+const STORAGE_KEY = "ccc_field_library_added_resources_v1";
+const shelves = JSON.parse(JSON.stringify(defaultShelves));
+
+function loadAddedResources(){
+  try{
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+    shelves.forEach(s=>{
+      if(Array.isArray(saved[s.title])) s.resources.push(...saved[s.title]);
+    });
+  }catch(e){}
+}
+function saveAddedResource(shelfTitle, resource){
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+  if(!Array.isArray(saved[shelfTitle])) saved[shelfTitle] = [];
+  saved[shelfTitle].push(resource);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+}
+loadAddedResources();
+
+const grid = document.getElementById("shelvesGrid");
+const search = document.getElementById("searchInput");
+const clear = document.getElementById("searchClear");
+const modal = document.getElementById("modal");
+let activeShelf = null;
+
+function escapeHTML(value){
+  return String(value ?? "").replace(/[&<>"']/g,ch=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  })[ch]);
+}
+
+function countResources(){
+  return shelves.reduce((sum,s)=>sum+s.resources.length,0);
+}
+
+function renderShelves(){
+  const q = search.value.trim().toLowerCase();
+  const shelfOrder = [
+  "Environmental Stewardship",
+  "Water Sector",
+  "Climate-Resilient Agriculture",
+  "Sustainable Finance",
+  "MERL",
+  "Climate Change",
+  "Gender and Inclusion"
+];
+
+const filtered = [...shelves]
+  .sort((a, b) => shelfOrder.indexOf(a.title) - shelfOrder.indexOf(b.title))
+  .filter(s => {
+    const hay = [
+      s.title,s.description,
+      ...s.resources.map(r=>`${r.title} ${r.summary} ${r.tag}`)
+    ].join(" ").toLowerCase();
+    return hay.includes(q);
+  });
+
+  clear.style.display = q ? "" : "none";
+  document.getElementById("resourceTotal").textContent = countResources();
+
+  if(!filtered.length){
+    grid.innerHTML = `<div class="empty"><strong>Nothing found yet.</strong><br>The library is always growing.</div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(s=>`
+    <article class="shelf-card" onclick="openShelf('${encodeURIComponent(s.title)}')">
+      <div class="shelf-cover" style="background:linear-gradient(rgba(38,24,15,.22),rgba(38,24,15,.22)),url('${s.img || ""}'),${s.color}">
+        <div class="shelf-icon">${s.icon}</div>
+      </div>
+      <div class="shelf-copy">
+        <h3>${escapeHTML(s.title)}</h3>
+        <p>${escapeHTML(s.description)}</p>
+      </div>
+      <div class="shelf-count">${s.resources.length} resource${s.resources.length===1?"":"s"}</div>
+    </article>
+  `).join("");
+}
+
+function openShelf(encodedTitle){
+  const title = decodeURIComponent(encodedTitle);
+  const shelf = shelves.find(s=>s.title===title);
+  if(!shelf) return;
+
+  activeShelf = shelf;
+  document.getElementById("modalTop").style.background = `linear-gradient(rgba(255,253,248,.35),rgba(255,253,248,.35)),url('${shelf.img || ""}'),${shelf.color}`;
+  document.getElementById("modalTop").style.backgroundSize = "cover";
+  document.getElementById("modalTop").style.backgroundPosition = "center";
+  document.getElementById("modalEyebrow").textContent = `${shelf.resources.length} resource${shelf.resources.length===1?"":"s"}`;
+  document.getElementById("modalTitle").textContent = shelf.title;
+  document.getElementById("shelfIntro").textContent = shelf.description;
+
+  const list = document.getElementById("resourceList");
+  list.innerHTML = (shelf.resources.length
+    ? shelf.resources.map((r,i)=>`
+      <article class="resource" onclick="openResource(${i})">
+        <span class="resource-tag">${escapeHTML(r.tag)}</span>
+        <div>
+          <h4>${escapeHTML(r.title)}</h4>
+          <p>${escapeHTML(r.summary)}</p>
+        </div>
+        <span class="arrow">›</span>
+      </article>
+    `).join("")
+    : `<div class="coming-soon"><strong>Resources coming soon.</strong><br>This shelf is ready for the next CCC learning materials.</div>`)
+    + `
+      <div class="add-resource-panel">
+        <button class="add-resource-toggle" onclick="toggleAddResourceForm()">＋ Add resource</button>
+        <div class="add-resource-form" id="addResourceForm">
+          <div class="form-grid">
+            <div class="form-field"><label>Resource title</label><input id="newResourceTitle" placeholder="e.g. Wetland basics"></div>
+            <div class="form-field"><label>Tag</label><input id="newResourceTag" placeholder="e.g. Guide, Tool, Video, Notes"></div>
+            <div class="form-field"><label>Short summary</label><textarea id="newResourceSummary" placeholder="Write one or two lines describing the resource."></textarea></div>
+            <div class="form-field"><label>Full content / notes</label><textarea id="newResourceBody" placeholder="Paste notes, key points, links, instructions, or learning material here."></textarea></div>
+            <div class="form-field"><label>Document link</label><input id="newResourceDocLink" placeholder="Paste a Google Drive, Notion, website or PDF link"></div>
+            <div class="form-field"><label>Upload document</label><input id="newResourceFile" class="file-input" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.md,.jpg,.jpeg,.png"></div>
+          </div>
+          <div class="form-actions">
+            <button class="form-submit" onclick="submitNewResource()">Save resource</button>
+            <button class="form-cancel" onclick="toggleAddResourceForm(false)">Cancel</button>
+          </div>
+          <div class="saved-note">Saved in this browser. For shared team access, paste a Google Drive/Notion document link rather than relying only on a local upload.</div>
+        </div>
+      </div>
+    `;
+
+  document.getElementById("shelfView").style.display = "";
+  document.getElementById("resourceView").style.display = "none";
+  modal.classList.add("open");
+  document.body.style.overflow = "hidden";
+  document.getElementById("modalBox").scrollTop = 0;
+}
+
+function openResource(index){
+  if(!activeShelf || !activeShelf.resources[index]) return;
+  const r = activeShelf.resources[index];
+
+  const docLink = r.docLink
+    ? `<a class="document-link" href="${escapeHTML(r.docLink)}" target="_blank" rel="noopener">📎 Open linked document</a>`
+    : "";
+  const uploadedDoc = r.fileData
+    ? `<a class="document-link" href="${r.fileData}" download="${escapeHTML(r.fileName || "resource-document")}">📄 Download uploaded document</a>
+       <div class="document-note">Uploaded file: ${escapeHTML(r.fileName || "document")}</div>`
+    : "";
+
+  document.getElementById("resourceDetail").innerHTML = `
+    <span class="detail-tag">${escapeHTML(r.tag)}</span>
+    <h3 class="detail-title">${escapeHTML(r.title)}</h3>
+    <div class="detail-sub">${escapeHTML(activeShelf.title)}</div>
+    <div class="detail-body">${r.body}</div>
+    ${docLink}
+    ${uploadedDoc}
+  `;
+
+  document.getElementById("shelfView").style.display = "none";
+  document.getElementById("resourceView").style.display = "";
+  document.getElementById("modalBox").scrollTop = 0;
+}
+
+
+function toggleAddResourceForm(force){
+  const form = document.getElementById("addResourceForm");
+  if(!form) return;
+  const shouldOpen = typeof force === "boolean" ? force : !form.classList.contains("open");
+  form.classList.toggle("open", shouldOpen);
+}
+
+function simpleBodyToHTML(value){
+  const safe = escapeHTML(value).trim();
+  if(!safe) return "<p>No detailed notes have been added yet.</p>";
+  return safe.split(/\n{2,}/).map(block=>`<p>${block.replace(/\n/g,"<br>")}</p>`).join("");
+}
+
+function readFileAsDataURL(file){
+  return new Promise((resolve,reject)=>{
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function submitNewResource(){
+  if(!activeShelf) return;
+  const titleEl = document.getElementById("newResourceTitle");
+  const tagEl = document.getElementById("newResourceTag");
+  const summaryEl = document.getElementById("newResourceSummary");
+  const bodyEl = document.getElementById("newResourceBody");
+  const docLinkEl = document.getElementById("newResourceDocLink");
+  const fileEl = document.getElementById("newResourceFile");
+
+  const title = titleEl.value.trim();
+  if(!title){ titleEl.focus(); return; }
+
+  const resource = {
+    tag: tagEl.value.trim() || "Resource",
+    title,
+    summary: summaryEl.value.trim() || "New resource added through the library.",
+    body: simpleBodyToHTML(bodyEl.value),
+    docLink: docLinkEl.value.trim()
+  };
+
+  const file = fileEl && fileEl.files && fileEl.files[0] ? fileEl.files[0] : null;
+  if(file){
+    if(file.size > 3 * 1024 * 1024){
+      alert("This file is quite large. Please upload it to Google Drive/Notion and paste the link instead.");
+      return;
+    }
+    resource.fileName = file.name;
+    resource.fileType = file.type;
+    resource.fileData = await readFileAsDataURL(file);
+  }
+
+  activeShelf.resources.push(resource);
+  saveAddedResource(activeShelf.title, resource);
+  openShelf(encodeURIComponent(activeShelf.title));
+  renderShelves();
+}
+
+function backToShelf(){
+  document.getElementById("resourceView").style.display = "none";
+  document.getElementById("shelfView").style.display = "";
+  document.getElementById("modalBox").scrollTop = 0;
+}
+
+function closeModal(){
+  modal.classList.remove("open");
+  document.body.style.overflow = "";
+  activeShelf = null;
+}
+
+search.addEventListener("input",renderShelves);
+clear.addEventListener("click",()=>{
+  search.value="";
+  search.focus();
+  renderShelves();
+});
+modal.addEventListener("click",e=>{
+  if(e.target===modal) closeModal();
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape") closeModal();
+});
+
+renderShelves();
+</script>
+</body>
+</html>
