@@ -813,6 +813,23 @@ const defaultShelves = [
   }
 ];
 
+// Set the display order of the knowledge shelves
+const shelfOrder = [
+  "Environmental Stewardship",
+  "Water Sector",
+  "Climate-Resilient Agriculture",
+  "Sustainable Finance",
+  "MERL",
+  "Climate Change",
+  "Gender and Inclusion"
+];
+
+defaultShelves.sort(
+  (a, b) => shelfOrder.indexOf(a.title) - shelfOrder.indexOf(b.title)
+);
+
+const STORAGE_KEY = "ccc_field_library_added_resources_v1";
+
 const STORAGE_KEY = "ccc_field_library_added_resources_v1";
 const shelves = JSON.parse(JSON.stringify(defaultShelves));
 
